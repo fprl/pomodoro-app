@@ -1,0 +1,25 @@
+{
+  "name": "pomodoro-app",
+  "version": "1.0.0",
+  "description": "A scss/js Pomodoro app!",
+  "main": "index.js",
+  "scripts": {
+    "build-css": "tailwindcss build dist/styles/styles.css -o dist/styles/main.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/francoromanol/pomodoro-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/francoromanol/pomodoro-app/issues"
+  },
+  "homepage": "https://github.com/francoromanol/pomodoro-app#readme",
+  "dependencies": {
+    "autoprefixer": "^10.2.4",
+    "postcss": "^8.2.5",
+    "tailwindcss": "^2.0.3"
+  }
+}

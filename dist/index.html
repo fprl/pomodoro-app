@@ -4,62 +4,70 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" href="./img/tomato.png"/>
+  <link rel="icon" type="image/png" href="./images/tomato.png"/>
   <link rel="stylesheet" href="./styles/main.css">
   <script src="./scripts/app.js"></script>
   <title>Pomodoro App</title>
 </head>
 
 <body>
-</div class="">
-  <header class="">
-    <nav class="">
-      <ul class="">
-        <li>PomoApp</li>
-        <li>History</li>
-        <li>Settings</li>
-      </ul>
-    </nav>
-  </header>
+  <div class="container"> 
 
-  <article class="">
-    <h1>What's your focus?</h1>
-    <div class="">
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-    </div>
-    <p class=""></p>
-    <div>
-      <input type="text" id="" name="tasks" required maxlength="128" placeholder="Task to focus on">
-      <p>Last focus:</p>
-    </div>
-  </article>
+    <header class="">
+      <nav class="">
+        <ul class="main-header__items">
+          <li class="main-header__brand">PomoApp</li>
+          <div>
+            <li class="">
+              <a href="">History</a>
+            </li>
+            <li>
+              <a href="">Settings</a>
+            </li>
+          </div>
+        </ul>
+      </nav>
+    </header>
 
-  <article class="">
-    <div>
-      <div id="">
-        Here goes the clock!
+    <main class="pomodoro">
+      <div class="clock">
+        <div id="clock__main">
+          Here goes the clock!
+        </div>
+        <h2 class="clock__timer">25:00</h2>
+        <p class="clock__info">Time remaining</p>
       </div>
-      <h2 class="">25:00</h2>
-      <p class="">Time remaining</p>
-    </div>
-  </article>
 
-  <footer class="">
-    <ul>
-      <li>Twitter</li>
-      <li>LinkedIn</li>
-      <li>GitHub</li>
-    </ul>
-    <p>Made by FRL</p>
-  </footer>
-<div>
+      <div class="status-info">
+        <p class="">Working on</p>
+        <div class="">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <p class=""></p>
+      </div>
+      
+      <div class="">
+        <input type="text" id="" name="tasks" required maxlength="128" placeholder="Task to focus on">
+        <p>Last focus:</p>
+      </div>
+    </main>
+
+    <footer class="main-footer">
+      <ul class="main-footer__items">
+        <li>Twitter</li>
+        <li>LinkedIn</li>
+        <li>GitHub</li>
+      </ul>
+      <p class="main-footer__made-by">Made by FRL</p>
+    </footer>
+  </div>
     
 
 </body>
