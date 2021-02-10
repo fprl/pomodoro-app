@@ -1,2 +1,2 @@
 # pomodoro-app
-A scss/js Pomodoro app!
+A tailwind/js Pomodoro app!
