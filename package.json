@@ -21,5 +21,8 @@
     "autoprefixer": "^10.2.4",
     "postcss": "^8.2.5",
     "tailwindcss": "^2.0.3"
+  },
+  "devDependencies": {
+    "tailwindcss-owl": "^2.0.0"
   }
 }

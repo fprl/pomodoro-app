@@ -10,63 +10,64 @@
   <title>Pomodoro App</title>
 </head>
 
-<body>
-  <div class="container"> 
-
-    <header class="">
-      <nav class="">
-        <ul class="main-header__items">
-          <li class="main-header__brand">PomoApp</li>
-          <div>
-            <li class="">
-              <a href="">History</a>
-            </li>
-            <li>
-              <a href="">Settings</a>
-            </li>
-          </div>
-        </ul>
+<body class>
+  <div class="h-screen max-w-full mx-auto bg-red-400">
+    <div class="flex-col md:max-w-3xl lg:max-w-3xl o-6">
+      <nav class="flex justify-between text-lg leading-5 text-white font-roboto">
+            <a class="flex m-4" href="./index.html">
+              <img class="" src="./images/tomato.png" alt="">
+              <h1>PomoApp</h1>
+            </a>
+            </h1>
+            <ul class="flex">
+              <li class="m-4">
+                <a href="">History</a>
+              </li>
+              <li class="m-4">
+                <a href="">Settings</a>
+              </li>
+            </ul>
       </nav>
-    </header>
 
-    <main class="pomodoro">
-      <div class="clock">
-        <div id="clock__main">
-          Here goes the clock!
+      <main class="pomodoro">
+        <div class="clock">
+          <div id="clock__main">
+            Here goes the clock!
+          </div>
+          <h2 class="clock__timer">25:00</h2>
+          <p class="clock__info">Time remaining</p>
         </div>
-        <h2 class="clock__timer">25:00</h2>
-        <p class="clock__info">Time remaining</p>
-      </div>
 
-      <div class="status-info">
-        <p class="">Working on</p>
+        <div class="status-info">
+          <p class="">Working on</p>
+          <div class="">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <p class=""></p>
+        </div>
+        
         <div class="">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
+          <input type="text" id="" name="tasks" required maxlength="128" placeholder="Task to focus on">
+          <p>Last focus:</p>
         </div>
-        <p class=""></p>
-      </div>
-      
-      <div class="">
-        <input type="text" id="" name="tasks" required maxlength="128" placeholder="Task to focus on">
-        <p>Last focus:</p>
-      </div>
-    </main>
+      </main>
 
-    <footer class="main-footer">
-      <ul class="main-footer__items">
-        <li>Twitter</li>
-        <li>LinkedIn</li>
-        <li>GitHub</li>
-      </ul>
-      <p class="main-footer__made-by">Made by FRL</p>
-    </footer>
+      <footer class="main-footer">
+        <ul class="main-footer__items">
+          <li>Twitter</li>
+          <li>LinkedIn</li>
+          <li>GitHub</li>
+        </ul>
+        <p class="main-footer__made-by">Made by FRL</p>
+      </footer>
+    </div>      
   </div>
     
 

@@ -1,16 +1,21 @@
 module.exports = {
   purge: {
-    enabled: true,
+    enabled: false,
     content: [
     './dist/**/*.html',
     './dist/**/*.js',],
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'roboto': ['Roboto']
+      }
+    },
   },
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-owl')],
 }
