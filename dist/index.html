@@ -11,63 +11,71 @@
 </head>
 
 <body class>
-  <div class="h-screen max-w-full mx-auto bg-red-400">
-    <div class="flex-col md:max-w-3xl lg:max-w-3xl o-6">
-      <nav class="flex justify-between text-lg leading-5 text-white font-roboto">
-            <a class="flex m-4" href="./index.html">
-              <img class="" src="./images/tomato.png" alt="">
-              <h1>PomoApp</h1>
-            </a>
-            </h1>
-            <ul class="flex">
-              <li class="m-4">
-                <a href="">History</a>
-              </li>
-              <li class="m-4">
-                <a href="">Settings</a>
-              </li>
-            </ul>
+  <div class="h-screen max-w-full mx-auto bg-red-500 o-10 font-roboto">
+    
+    <!-- navbar -->
+    <div class="p-3 mx-auto md:px-16 md:max-w-3xl lg:max-w-3xl">
+      <nav class="flex justify-between text-lg leading-5 text-white shadow-md">
+        <a class="flex m-4" href="./index.html">
+          <img class="mr-1" src="./images/tomato.png" alt="">
+          <h1>PomoApp</h1>
+        </a>
+        </h1>
+        <ul class="flex items-center justify-end flex-grow">
+          <li class="m-4">
+            <a href="">History</a>
+          </li>
+<!--           <li class="m-4">
+            <a href="">Settings</a>
+          </li> -->
+          <li class="">
+            <a class="" href="">
+              <svg class="w-10 h-10 fill-current" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M17 5.5H20C21.1046 5.5 22 6.39543 22 7.5V19.5C22 20.6046 21.1046 21.5 20 21.5H4C2.89543 21.5 2 20.6046 2 19.5V7.5C2 6.39543 2.89543 5.5 4 5.5H7C7 3.84315 8.34315 2.5 10 2.5H14C15.6569 2.5 17 3.84315 17 5.5ZM14 4.5H10C9.44772 4.5 9 4.94772 9 5.5H15C15 4.94772 14.5523 4.5 14 4.5ZM20 7.5H4V9.5H20V7.5ZM4 19.5V11.5H7V13.5H11V11.5H13V13.5H17V11.5H20V19.5H4Z" fill="currentColor" />
+              </svg>
+              <p class="hidden">Settings</p>
+          </a>
+          </li>
+        </ul>
+        <div>
       </nav>
+    </div>
 
-      <main class="pomodoro">
-        <div class="clock">
-          <div id="clock__main">
-            Here goes the clock!
-          </div>
-          <h2 class="clock__timer">25:00</h2>
-          <p class="clock__info">Time remaining</p>
+    <!-- pomodoro -->
+    <div class="px-10 mx-auto md:px-16 md:max-w-3xl lg:max-w-3xl">
+      <main class="o-10">
+        
+        <!-- clock -->
+        <div class="flex items-center justify-center mx-auto bg-red-600 rounded-full bg-opacity-80 w-72 h-72">
+          <h2 class="text-5xl text-white">25:00</h2>
+          
         </div>
 
-        <div class="status-info">
-          <p class="">Working on</p>
-          <div class="">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-          <p class=""></p>
+        <!-- task -->
+        <div class="flex flex-col items-center text-center text-white divide-y-2 divide-gray-100 divide-opacity-50 o-2">
+          <h1 class="text-base uppercase">Write a poem</h1>
+          <p class="text-sm font-thin leading-normal md:w-9/12">write a draft of the first chapter of the poem. think over the names of the heroes and the names of cities</p>
         </div>
         
-        <div class="">
-          <input type="text" id="" name="tasks" required maxlength="128" placeholder="Task to focus on">
-          <p>Last focus:</p>
+        <!-- cta -->
+        <div class="flex flex-col items-center px-6 o-4">
+          <button class="w-8/12 py-2 text-xl font-bold text-red-500 uppercase bg-white rounded-full shadow md:w-6/12 focus:outline-none">start</button>
+          <button class="w-8/12 py-2 text-xl font-bold text-gray-100 uppercase bg-red-700 border-2 border-gray-100 border-dashed rounded-full md:w-6/12 bg-opacity-60 focus:outline-none">add task</button>
         </div>
       </main>
+    </div>
 
-      <footer class="main-footer">
-        <ul class="main-footer__items">
+    <!-- footer -->
+    <div class="flex-col p-3 mx-auto md:px-16 md:max-w-3xl lg:max-w-3xl">
+      <footer class="">
+        <ul class="inline-flex">
           <li>Twitter</li>
           <li>LinkedIn</li>
           <li>GitHub</li>
         </ul>
         <p class="main-footer__made-by">Made by FRL</p>
       </footer>
-    </div>      
+    </div>
   </div>
     
 
