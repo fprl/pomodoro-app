@@ -14,27 +14,30 @@
   <div class="h-screen max-w-full mx-auto bg-red-500 o-10 font-roboto">
     
     <!-- navbar -->
-    <div class="p-3 mx-auto md:px-16 md:max-w-3xl lg:max-w-3xl">
-      <nav class="flex justify-between text-lg leading-5 text-white shadow-md">
-        <a class="flex m-4" href="./index.html">
-          <img class="mr-1" src="./images/tomato.png" alt="">
-          <h1>PomoApp</h1>
+    <div class="p-3 mx-auto md:max-w-2xl lg:max-w-3xl">
+      <nav class="flex justify-between pb-1 leading-5 text-white border-b border-black border-opacity-10">
+        <a class="flex items-center my-2 text-xl" href="./index.html">
+          <img class="mr-1 h-4/5" src="./images/tomato.png" alt="">
+          <h1>Pomoapp</h1>
         </a>
         </h1>
         <ul class="flex items-center justify-end flex-grow">
-          <li class="m-4">
-            <a href="">History</a>
-          </li>
-<!--           <li class="m-4">
-            <a href="">Settings</a>
-          </li> -->
-          <li class="">
-            <a class="" href="">
-              <svg class="w-10 h-10 fill-current" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M17 5.5H20C21.1046 5.5 22 6.39543 22 7.5V19.5C22 20.6046 21.1046 21.5 20 21.5H4C2.89543 21.5 2 20.6046 2 19.5V7.5C2 6.39543 2.89543 5.5 4 5.5H7C7 3.84315 8.34315 2.5 10 2.5H14C15.6569 2.5 17 3.84315 17 5.5ZM14 4.5H10C9.44772 4.5 9 4.94772 9 5.5H15C15 4.94772 14.5523 4.5 14 4.5ZM20 7.5H4V9.5H20V7.5ZM4 19.5V11.5H7V13.5H11V11.5H13V13.5H17V11.5H20V19.5H4Z" fill="currentColor" />
+          <li class="flex justify-center w-8 h-8 ml-3 bg-white rounded-md bg-opacity-30 md:w-1/6">
+            <button class="flex items-center justify-center w-full opacity-90" href="">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
               </svg>
-              <p class="hidden">Settings</p>
-          </a>
+              <p class="hidden ml-1 text-xs md:block lg:block">Report</p>
+            </button>
+          </li>
+          <li class="flex justify-center w-8 h-8 ml-3 bg-white rounded-md bg-opacity-30 md:w-1/6">
+            <button class="flex items-center justify-center w-full opacity-90">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+              </svg>
+              <p class="hidden ml-1 text-xs md:block lg:block">Settings</p>
+            </button>
           </li>
         </ul>
         <div>
@@ -48,7 +51,6 @@
         <!-- clock -->
         <div class="flex items-center justify-center mx-auto bg-red-600 rounded-full bg-opacity-80 w-72 h-72">
           <h2 class="text-5xl text-white">25:00</h2>
-          
         </div>
 
         <!-- task -->
@@ -59,8 +61,8 @@
         
         <!-- cta -->
         <div class="flex flex-col items-center px-6 o-4">
-          <button class="w-8/12 py-2 text-xl font-bold text-red-500 uppercase bg-white rounded-full shadow md:w-6/12 focus:outline-none">start</button>
-          <button class="w-8/12 py-2 text-xl font-bold text-gray-100 uppercase bg-red-700 border-2 border-gray-100 border-dashed rounded-full md:w-6/12 bg-opacity-60 focus:outline-none">add task</button>
+          <button class="w-9/12 py-2 text-xl font-bold text-red-500 uppercase bg-white rounded-full shadow md:w-6/12 lg:w-5/12 focus:outline-none">start</button>
+          <button class="w-9/12 py-2 text-xl font-bold text-gray-100 uppercase bg-red-700 border-2 border-gray-100 border-dashed rounded-full md:w-6/12 lg:w-5/12 bg-opacity-60 focus:outline-none">add task</button>
         </div>
       </main>
     </div>
