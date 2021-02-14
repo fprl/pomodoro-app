@@ -10,12 +10,12 @@
   <title>Pomodoro App</title>
 </head>
 
-<body class>
-  <div class="h-screen max-w-full mx-auto bg-red-500 o-6 font-roboto">
+<body>
+  <div class="h-full max-w-full mx-auto bg-red-500 md:h-screen o-8 font-roboto">
     
     <!-- navbar -->
-    <div class="p-3 mx-auto md:max-w-2xl lg:max-w-3xl">
-      <nav class="flex justify-between pb-1 leading-5 text-white border-b border-black border-opacity-10">
+    <nav class="p-3 pb-0 mx-auto md:max-w-2xl lg:max-w-3xl">
+      <div class="flex justify-between pb-1 leading-5 text-white border-b border-black border-opacity-10">
         <a class="flex items-center my-2 text-xl" href="./index.html">
           <img class="mr-1 h-4/5" src="./images/tomato.png" alt="">
           <h1>Pomoapp</h1>
@@ -41,52 +41,64 @@
           </li>
         </ul>
         <div>
-      </nav>
-    </div>
+      </div>
+    </nav>
 
     <!-- pomodoro -->
-    <div class="px-6 mx-auto sm:max-w-lg md:max-w-lg lg:max-w-xl">
-      <main class="o-6">
-        
+    <main class="px-6 mx-auto sm:max-w-lg md:max-w-lg lg:max-w-xl">
+      <div class="flex flex-col items-center justify-center o-6">
+        <!-- selectors -->
+        <div class="flex items-center justify-center w-full rounded-md">
+          <button class="w-24 p-2 mx-2 text-sm text-white bg-white rounded-md shadow-sm bg-opacity-30 focus:bg-opacity-50 focus:bg-red-700 md:w-6/12 focus:outline-none">Pomodoro</button>
+          <button class="w-24 p-2 mx-2 text-sm text-white bg-white rounded-md shadow-sm bg-opacity-30 focus:bg-opacity-50 focus:bg-red-700 md:w-6/12 focus:outline-none">Short break</button>
+          <button class="w-24 p-2 mx-2 text-sm text-white bg-white rounded-md shadow-sm bg-opacity-30 focus:bg-opacity-50 focus:bg-red-700 md:w-6/12 focus:outline-none">Long break</button>
+        </div>
         <!-- clock -->
-        <div class="flex flex-col items-center justify-center o-6">
-          <div class="flex items-center justify-center w-full rounded-md">
-            <button class="w-24 p-2 mx-2 text-sm text-white bg-white rounded-md shadow-sm bg-opacity-30 focus:bg-opacity-50 focus:bg-red-700 md:w-6/12 focus:outline-none">Pomodoro</button>
-            <button class="w-24 p-2 mx-2 text-sm text-white bg-white rounded-md shadow-sm bg-opacity-30 focus:bg-opacity-50 focus:bg-red-700 md:w-6/12 focus:outline-none">Short break</button>
-            <button class="w-24 p-2 mx-2 text-sm text-white bg-white rounded-md shadow-sm bg-opacity-30 focus:bg-opacity-50 focus:bg-red-700 md:w-6/12 focus:outline-none">Long break</button>
-          </div>
-          <div class="flex flex-col items-center justify-center mx-auto bg-red-600 rounded-full shadow-md bg-opacity-80 w-72 h-72 o-4">
-            <h2 class="text-white text-7xl">25:00</h2>
-            <button class="w-4/12 h-8 text-sm font-bold text-red-500 uppercase bg-white rounded-md md:w-6/12 lg:w-5/12 focus:outline-none">start</button>
-          </div>
-        </div>
+        <div class="flex flex-col items-center justify-center mx-auto bg-red-600 rounded-full shadow-md bg-opacity-80 w-72 h-72 o-4">
+          <h2 class="text-white text-7xl">25:00</h2>
+          <button class="w-4/12 h-8 text-sm font-bold text-red-500 uppercase bg-white rounded-md md:w-6/12 lg:w-5/12 focus:outline-none">start</button>
+      </div>
+    </main>
+    
+    <!-- task cta -->
+    <section class="px-6 mx-auto sm:max-w-lg md:max-w-lg lg:max-w-xl">
+      <!-- task info -->
+      <div class="flex flex-col items-center text-center text-white divide-y-2 divide-gray-100 divide-opacity-50 o-2">
+        <h1 class="text-sm uppercase">Write a poem</h1>
+        <p class="text-sm font-thin leading-normal md:w-9/12">write a draft of the first chapter of the poem. think over the names of the heroes and the names of cities</p>
+      </div>
 
-        <!-- task -->
-        <div class="flex flex-col items-center text-center text-white divide-y-2 divide-gray-100 divide-opacity-50 o-2">
-          <h1 class="text-sm uppercase">Write a poem</h1>
-          <p class="text-sm font-thin leading-normal md:w-9/12">write a draft of the first chapter of the poem. think over the names of the heroes and the names of cities</p>
-        </div>
-        
-        <!-- cta -->
-        <div class="flex flex-col items-center px-6">
-          <button class="w-9/12 h-10 text-sm text-gray-100 uppercase bg-white rounded-sm shadow-sm bg-opacity-30 md:w-6/12 lg:w-5/12 focus:outline-none">add task</button>
-        </div>
-      </main>
-    </div>
+      <!-- add task -->
+      <div class="flex flex-col items-center px-6 mt-6">
+        <button class="w-9/12 h-10 text-sm text-gray-100 uppercase bg-white rounded-sm shadow-sm bg-opacity-30 md:w-6/12 lg:w-5/12 focus:outline-none">add task</button>
+      </div>
+
+      <!-- task modal -->
+      <div class="absolute top-0 left-0 invisible w-full h-full bg-white pointer-events-none modal">
+        <form>
+          <div>
+            <label for=""></label>
+            <input type="text">
+            <label for=""></label>
+            <input type="text">
+          </div>
+          <div>
+            <button></button>
+            <button></button>
+        </form>
+      </div>
+    </section>
 
     <!-- footer -->
-    <div class="flex-col p-3 mx-auto md:px-16 md:max-w-3xl lg:max-w-3xl">
-      <footer class="">
+    <footer class="flex-col p-3 mx-auto md:px-16 md:max-w-3xl lg:max-w-3xl">
+      <div class="">
         <ul class="inline-flex">
           <li>Twitter</li>
           <li>LinkedIn</li>
           <li>GitHub</li>
         </ul>
         <p class="main-footer__made-by">Made by FRL</p>
-      </footer>
-    </div>
-  </div>
-    
-
+      </div>
+    </footer>
 </body>
 </html>
