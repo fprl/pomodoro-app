@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <div class="h-full max-w-full mx-auto bg-red-500 md:h-screen o-8 font-roboto">
+  <div class="h-full max-w-full mx-auto bg-red-500 md:h-full o-8 font-roboto">
     
     <!-- navbar -->
     <nav class="p-3 pb-0 mx-auto md:max-w-2xl lg:max-w-3xl">
@@ -61,7 +61,7 @@
     </main>
     
     <!-- task cta -->
-    <section class="px-6 mx-auto sm:max-w-lg md:max-w-lg lg:max-w-xl">
+    <section class="px-6 mx-auto sm:max-w-lg md:max-w-lg lg:max-w-xl o-6">
       <!-- task info -->
       <div class="flex flex-col items-center text-center text-white divide-y-2 divide-gray-100 divide-opacity-50 o-2">
         <h1 class="text-sm uppercase">Write a poem</h1>
@@ -74,19 +74,17 @@
       </div>
 
       <!-- task modal -->
-      <div class="absolute top-0 left-0 invisible w-full h-full bg-white pointer-events-none modal">
-        <form>
-          <div>
-            <label for=""></label>
-            <input type="text">
-            <label for=""></label>
-            <input type="text">
+      <div id="add-task-modal" class="flex items-center justify-center hidden">
+        <div class="bg-white rounded-md md:w-5/6 h-1/3">
+          <div class="grid p-4">
+            <input class="p-2 my-4 text-xl border md:text-lg" type="text" maxlength="32" placeholder="What are you working on?">
+            <textarea class="p-2 mt-1 border resize-none md:text-sm" cols="30" rows="5" maxlength="128" placeholder="things to remember, etc"></textarea>
           </div>
-          <div>
-            <button></button>
-            <button></button>
-        </form>
-      </div>
+          <div class="flex flex-col items-center justify-end px-4 py-2 bg-gray-100 md:flex-row md:px-2 bg-opacity-30">
+            <button class="w-full h-10 my-2 text-sm font-bold text-gray-500 bg-white border border-gray-200 rounded-md shadow-sm md:w-1/4 md:mr-4 focus:outline-none">Cancel</button>
+            <button class="w-full h-10 my-2 text-sm font-bold text-white bg-red-600 border border-gray-200 rounded-md shadow-sm md:w-1/3 md:mr-2 focus:outline-none">Add new task</button>
+          </div>
+        </div>
     </section>
 
     <!-- footer -->
