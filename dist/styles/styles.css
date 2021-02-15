@@ -1,5 +1,6 @@
 @tailwind base;
 @tailwind components;
+@tailwind utilities;
 
 @font-face {
   font-family: 'Roboto';
@@ -7,4 +8,11 @@
   font-weight: 1 999;
 }
 
-@tailwind utilities;
+/* Toggle checkbox button */
+.toggle__dot {
+  @apply transition-all duration-300 ease-in-out -top-1 -left-1;
+}
+
+input:checked ~ .toggle__dot {
+  @apply transform translate-x-full bg-red-600;
+}
