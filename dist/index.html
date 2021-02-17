@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="./images/tomato.png"/>
   <link rel="stylesheet" href="./styles/main.css">
-  <script src="./scripts/app.js"></script>
+  <script type="module" src="./scripts/app2.js"></script>
   <title>Pomodoro App</title>
 </head>
 
@@ -58,15 +58,15 @@
               <div class="flex items-center justify-between my-2 font-normal">
                 <div class="flex flex-col w-24 md:w-1/4 o-1">
                   <span class="text-xs text-gray-400">Pomodoro</span>
-                  <input class="p-2 bg-gray-100 border rounded-md" type="number" maxlength="2" value="25">
+                  <input id="work-duration" class="p-2 bg-gray-100 border rounded-md" type="number" maxlength="2" value="25">
                 </div>
                 <div class="flex flex-col w-24 md:w-1/4 o-1">
                   <span class="text-xs text-gray-400">Short break</span>
-                  <input class="p-2 bg-gray-100 border rounded-md" type="number" maxlength="2" value="5">
+                  <input id="break-duration" class="p-2 bg-gray-100 border rounded-md" type="number" maxlength="2" value="5">
                 </div>
                 <div class="flex flex-col w-24 md:w-1/4 o-1">
                   <span class="text-xs text-gray-400">Long break</span>
-                  <input class="p-2 bg-gray-100 border rounded-md" type="number" maxlength="2" value="15">
+                  <input id="long-break-duration" class="p-2 bg-gray-100 border rounded-md" type="number" maxlength="2" value="15">
                 </div>
               </div>
             </div>
@@ -111,8 +111,10 @@
         </div>
         <!-- clock -->
         <div class="flex flex-col items-center justify-center mx-auto bg-red-600 rounded-full shadow-md bg-opacity-80 w-72 h-72 o-4">
-          <h2 class="text-white text-7xl">25:00</h2>
-          <button class="w-4/12 h-8 text-sm font-bold text-red-500 uppercase bg-white rounded-md md:w-6/12 lg:w-5/12 focus:outline-none">start</button>
+          <h3 id="pomodoro-timer" class="text-white text-7xl">25:00</h3>
+          <button id="pomodoro-start" class="w-4/12 h-8 text-sm font-bold text-red-500 uppercase bg-white rounded-md md:w-6/12 lg:w-5/12 focus:outline-none">start</button>
+          <button id="pomodoro-pause" class="hidden"></button>
+          <button id="pomodoro-stop" class="hidden"></button>
       </div>
     </main>
     
