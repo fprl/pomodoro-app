@@ -8,7 +8,7 @@ export const tasks = () => {
 
   let sessionTasks = [];
 
-  
+
   // Returned
   const getSessionTasks = () => {
     return sessionTasks;
@@ -27,6 +27,7 @@ export const tasks = () => {
     sessionTasks.push(currentTask);
     return currentTask;
   }
+
 
   // UI
   const toggleModalHandler = () => {
@@ -65,6 +66,7 @@ export const tasks = () => {
   });
 
   return {
+    $addTaskBtn,
     getSessionTasks
   }
 

@@ -1,55 +1,41 @@
+import {renderCurrentLeftTime} from '../UI/renderTime.js'
 import {settings} from './settings.js';
 
 export const pomodoroTimer = () => {
-  const $pomodoroTimer = document.querySelector('#pomodoro-timer');
   const $startBtn = document.querySelector('#pomodoro-start');
   const $pauseBtn = document.querySelector('#pomodoro-pause');
   const $stopBtn = document.querySelector('#pomodoro-stop');
 
   let isClockRunning = false;
-  let clockTimer;
+  let isClockStopped = true;
   let type = 'Work';
   let timeSpentInCurrentSession = 0;
-
-  let Settings = settings();
+  let clockTimer;
+  
+  const Settings = settings();
   let {workSessionDuration, currentTimeLeftInSession, shortBreakDuration, longBreakDuration, autoStart, longBreakInterval} = Settings.getDefaultSettings();
-  let userCustomSettings;
-
-
-  // Utilities
-  const getCustomSettings = () => {
-    userCustomSettings = Settings.getUserSettings();
-    if (!userCustomSettings) {
+  
+  
+  // Timer settings
+  const getUserSettings = () => {
+    let userSettings = Settings.getUserSettings();
+    if (!userSettings) {
       return;
     }
-    console.log(userCustomSettings);
+    setUpdatedSettings(userSettings);
   }
-
-  const setUpdatedSettings = () => {
+  
+  const setUpdatedSettings = (settings) => {
     if (type === 'Work') {
-      
-    }
-  }
-
-  const stepDown = () => {
-    if (currentTimeLeftInSession > 0) {
-      currentTimeLeftInSession--;
-      timeSpentInCurrentSession++;
-    } 
-    else if (currentTimeLeftInSession === 0) {
-      timeSpentInCurrentSession = 0;
-      if (type === 'Work') {
-        currentTimeLeftInSession = shortBreakDuration
-        displaySessionLog('Work');
-        type = 'Short break';
-      } else {
-        currentTimeLeftInSession = workSessionDuration;
-        type = 'Work';
-        if (type === 'Short break') {
-          $addTaskBtn.classList.add('hidden');
-        }
-        displaySessionLog('Short break');
-      }
+      currentTimeLeftInSession = (settings.updatedWorkSessionDuration)
+        ? settings.updatedWorkSessionDuration
+        :  workSessionDuration
+      workSessionDuration = currentTimeLeftInSession;
+    } else {
+      currentTimeLeftInSession = (settings.updatedShortBreakDuration)
+        ? settings.updatedShortBreakDuration
+        : shortBreakDuration
+      shortBreakDuration = currentTimeLeftInSession;
     }
   }
 
@@ -59,7 +45,7 @@ export const pomodoroTimer = () => {
     isClockRunning = true;
     clockTimer = setInterval(() => {
       stepDown();
-      renderCurrentLeftTime();
+      renderCurrentLeftTime(currentTimeLeftInSession);
     }, 1000);
   };
 
@@ -69,62 +55,81 @@ export const pomodoroTimer = () => {
   };
 
   const stopClock = () => {
-    timeSpentInCurrentSession = 0;
+    getUserSettings();
     clearInterval(clockTimer);
+    isClockStopped = true;
     isClockRunning = false;
     currentTimeLeftInSession = workSessionDuration;
-    renderCurrentLeftTime();
+    renderCurrentLeftTime(currentTimeLeftInSession);
     type = 'Work';
+    timeSpentInCurrentSession = 0;
   };
+
+  
+  // Toggler
+  const stepDown = () => {
+    if (currentTimeLeftInSession > 0) {
+      currentTimeLeftInSession--;
+      timeSpentInCurrentSession++;
+    } 
+    else if (currentTimeLeftInSession === 0) {
+      timeSpentInCurrentSession = 0;
+      if (type === 'Work') {
+        currentTimeLeftInSession = shortBreakDuration
+        // displaySessionLog('Work'); 
+        type = 'Short break';
+        getUserSettings();
+      } else {
+        currentTimeLeftInSession = workSessionDuration;
+        type = 'Work';
+        getUserSettings();
+        if (type === 'Short break') {
+        }
+        // displaySessionLog('Short break');
+      }
+    }
+    renderCurrentLeftTime(currentTimeLeftInSession);
+  }
 
   const toggleClockHandler = (reset) => {
     if (reset) {
       stopClock();
+    } else {
+      if (isClockStopped) {
+        getUserSettings();
+        isClockStopped = false;
+      }
+      if (isClockRunning) {
+        clearInterval(clockTimer);
+        isClockRunning = false;
+      } else {
+        clockTimer = setInterval (() => {
+          stepDown();
+          renderCurrentLeftTime(currentTimeLeftInSession);
+        }, 1000)
+        isClockRunning = true;
+      }
     }
-    return isClockRunning ? pauseClock() : startTimer();
-  };
-
-  
-  // UI
-  const renderCurrentLeftTime = () => {
-    const secondsLeft = currentTimeLeftInSession;
-    let result = '';
-    const seconds = secondsLeft % 60;
-    const minutes = parseInt(secondsLeft / 60) % 60;
-    let hours = parseInt(secondsLeft / 3600);
-
-    function addLeadingZeroes(time) {
-      return time < 10 ? `0${time}` : time;
-    }
-
-    result =
-      (hours > 0)
-        ? result += `${hours}:`
-        : result += `${addLeadingZeroes(minutes)}:${addLeadingZeroes(seconds)}`;
-
-    $pomodoroTimer.textContent = result.toString();
   };
 
 
   // Handlers
   $startBtn.addEventListener('click', () => {
-    if (isClockRunning) {
+/*     if (isClockRunning) {
       return
-    }
-    getCustomSettings();
+    } */
     toggleClockHandler();
   });
   
   $pauseBtn.addEventListener('click', () => {
-    if (!isClockRunning) {
+/*     if (!isClockRunning) {
       return
-    }
+    } */
     toggleClockHandler();
   });
   
   $stopBtn.addEventListener('click', () => {
     toggleClockHandler(true);
   });
-
 
 }

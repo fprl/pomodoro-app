@@ -1,3 +1,5 @@
+import {renderCurrentLeftTime} from '../UI/renderTime.js'
+
 export const settings = () => {
   const $backdrop = document.querySelector('#backdrop');
   const $modal = document.querySelector('#pomodoro-set-modal');
@@ -31,16 +33,22 @@ export const settings = () => {
     return userCustomSettings;
   }
 
+  const renderUserCurrentLeftTime = () => {
+    let {updatedCurrentTimeLeftInSession} = userCustomSettings;
+
+    renderCurrentLeftTime(updatedCurrentTimeLeftInSession);
+  }
+
 
   // Utilities
   const userSettingsHandler = () => {
     userCustomSettings = {
-      workSessionDuration: $workSessionDuration.value,
-      currentTimeLeftInSession: $workSessionDuration.value,
-      shortBreakDuration: $shortBreakDuration.value,
-      longBreakDuration: $longBreakDuration.value,
-      autoStart: $autoStartRound.checked,
-      longBreakInterval: $longBreakInterval.value
+      updatedWorkSessionDuration: $workSessionDuration.value * 60,
+      updatedCurrentTimeLeftInSession: $workSessionDuration.value * 60,
+      updatedShortBreakDuration: $shortBreakDuration.value * 60,
+      updatedLongBreakDuration: $longBreakDuration.value * 60,
+      updatedAutoStart: $autoStartRound.checked,
+      updatedLongBreakInterval: $longBreakInterval.value
     }
   }
 
@@ -50,18 +58,19 @@ export const settings = () => {
     $modal.classList.toggle('hidden');
   }
 
-
   $showModalBtn.addEventListener('click', toggleModalHandler);
   $backdrop.addEventListener('click', toggleModalHandler);
   $cancelModalBtn.addEventListener('click', toggleModalHandler);
   $confirmModalBtn.addEventListener('click', () => {
     toggleModalHandler();
     userSettingsHandler();
+    renderUserCurrentLeftTime();
   })
 
   return {
     getDefaultSettings,
-    getUserSettings
+    getUserSettings,
+    renderUserCurrentLeftTime
   }
 
 }
