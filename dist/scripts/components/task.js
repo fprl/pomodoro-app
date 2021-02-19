@@ -1,4 +1,4 @@
-export const taskModal = () => {
+export const tasks = () => {
   const $addTaskBtn = document.querySelector('#add-task');
   const $modal = document.querySelector('#add-task-modal');
   const $taskTitle = $modal.querySelector('input');
@@ -7,6 +7,12 @@ export const taskModal = () => {
   const $confirmTaskModal = document.querySelector('#confirm-task-modal');
 
   let sessionTasks = [];
+
+  
+  // Returned
+  const getSessionTasks = () => {
+    return sessionTasks;
+  }
 
 
   // Utilities
@@ -21,7 +27,6 @@ export const taskModal = () => {
     sessionTasks.push(currentTask);
     return currentTask;
   }
-
 
   // UI
   const toggleModalHandler = () => {
@@ -60,7 +65,7 @@ export const taskModal = () => {
   });
 
   return {
-    $modal
+    getSessionTasks
   }
 
 }
