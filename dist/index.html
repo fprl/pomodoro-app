@@ -57,15 +57,15 @@
               <div class="flex items-center justify-between my-2 font-normal">
                 <div class="flex flex-col w-24 md:w-1/4 o-1">
                   <span class="text-xs text-gray-400">Pomodoro</span>
-                  <input id="work-duration" class="p-2 bg-gray-100 border rounded-md" type="number" maxlength="2" value="25">
+                  <input id="work-duration" class="p-2 bg-gray-100 border rounded-md" type="number" maxlength="2" value="25" max="60">
                 </div>
                 <div class="flex flex-col w-24 md:w-1/4 o-1">
                   <span class="text-xs text-gray-400">Short break</span>
-                  <input id="break-duration" class="p-2 bg-gray-100 border rounded-md" type="number" maxlength="2" value="5">
+                  <input id="short-break-duration" class="p-2 bg-gray-100 border rounded-md" type="number" maxlength="2" value="5" max="60">
                 </div>
                 <div class="flex flex-col w-24 md:w-1/4 o-1">
                   <span class="text-xs text-gray-400">Long break</span>
-                  <input id="long-break-duration" class="p-2 bg-gray-100 border rounded-md" type="number" maxlength="2" value="15">
+                  <input id="long-break-duration" class="p-2 bg-gray-100 border rounded-md" type="number" maxlength="2" value="15" max="60">
                 </div>
               </div>
             </div>
@@ -87,7 +87,7 @@
 
             <div class="flex flex-col items-baseline justify-between py-2 o-2">
               <h3>Long break interval</h3>
-              <input class="w-1/6 p-2 bg-gray-100 border rounded-md" type="number" maxlength="1" value="4" max="6">
+              <input id="long-break-interval" class="w-1/6 p-2 bg-gray-100 border rounded-md" type="number" maxlength="1" value="4" max="6">
             </div>
 
             <div class="flex items-center justify-end bg-gray-100 bg-opacity-30">
