@@ -13,7 +13,9 @@ export const settings = () => {
   const $autoStartRound = $modal.querySelector('#toogle');
   const $longBreakInterval = $modal.querySelector('#long-break-interval');
 
-  let isClockRunning;
+  let state = {
+    timeSpentInCurrentSession: 0
+  }
 
   let defaultSettings = {
     workSessionDuration: 1500,
@@ -23,6 +25,7 @@ export const settings = () => {
     autoStart: true,
     longBreakInterval: 4
   };
+  
   let userCustomSettings;
 
 
@@ -35,14 +38,8 @@ export const settings = () => {
     return userCustomSettings;
   }
 
-  const getClockState = (clockState) => {
-    isClockRunning = clockState;
-  }
-
-  const renderUserCurrentLeftTime = () => {
-    let {updatedCurrentTimeLeftInSession} = userCustomSettings;
-    
-    renderCurrentLeftTime(updatedCurrentTimeLeftInSession);
+  const getClockState = (timeInCurrentSession) => {
+    state.timeSpentInCurrentSession = timeInCurrentSession;
   }
 
 
@@ -58,11 +55,22 @@ export const settings = () => {
     }
   }
 
+
   // UI
   const toggleModalHandler = () => {
     $backdrop.classList.toggle('hidden');
     $modal.classList.toggle('hidden');
   }
+
+  const renderUserCurrentLeftTimeHandler = () => {
+    if (state.timeSpentInCurrentSession !== 0) {
+      return;
+    }
+    let {updatedCurrentTimeLeftInSession} = userCustomSettings;
+    
+    renderCurrentLeftTime(updatedCurrentTimeLeftInSession);
+  }
+
 
   $showModalBtn.addEventListener('click', toggleModalHandler);
   $backdrop.addEventListener('click', toggleModalHandler);
@@ -70,10 +78,7 @@ export const settings = () => {
   $confirmModalBtn.addEventListener('click', () => {
     toggleModalHandler();
     userSettingsHandler();
-    if (isClockRunning) {
-      return;
-    }
-    renderUserCurrentLeftTime();
+    renderUserCurrentLeftTimeHandler();
   })
 
   return {

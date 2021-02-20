@@ -10,13 +10,8 @@ export const pomodoroTimer = () => {
     isClockRunning: false,
     isClockStopped: true,
     type: 'Work',
-    timeSpentInCurrentSession: 0,
-    clockTimer: undefined
   }
 
-  let isClockRunning = false;
-  let isClockStopped = true;
-  let type = 'Work';
   let timeSpentInCurrentSession = 0;
   let clockTimer;
   
@@ -24,17 +19,17 @@ export const pomodoroTimer = () => {
   let {workSessionDuration, currentTimeLeftInSession, shortBreakDuration, longBreakDuration, autoStart, longBreakInterval} = Settings.getDefaultSettings();
   
   
-  // Timer settings
+  // Timer settings utilities
   const getUserSettings = () => {
     let userSettings = Settings.getUserSettings();
     if (!userSettings) {
       return;
     }
-    setUpdatedSettings(userSettings);
+    setUserSettings(userSettings);
   }
   
-  const setUpdatedSettings = (settings) => {
-    if (type === 'Work') {
+  const setUserSettings = (settings) => {
+    if (state.type === 'Work') {
       currentTimeLeftInSession = (settings.updatedWorkSessionDuration)
         ? settings.updatedWorkSessionDuration
         :  workSessionDuration
@@ -50,94 +45,70 @@ export const pomodoroTimer = () => {
 
   // Timer
   const startTimer = () => {
-    isClockRunning = true;
+    if (state.isClockRunning) {
+      return;
+    }
     clockTimer = setInterval(() => {
-      stepDown();
+      toggleSessionType()
       renderCurrentLeftTime(currentTimeLeftInSession);
     }, 1000);
+    state.isClockStopped = false;
+    state.isClockRunning = true;
+    Settings.getClockState(timeSpentInCurrentSession + 1);
   };
 
   const pauseTimer = () => {
     clearInterval(clockTimer);
-    isClockRunning = false;
+    state.isClockStopped = true;
+    state.isClockRunning = false;
   };
 
   const stopTimer = () => {
     getUserSettings();
     clearInterval(clockTimer);
-    isClockStopped = true;
-    isClockRunning = false;
+    state.isClockStopped = true;
+    state.isClockRunning = false;
     currentTimeLeftInSession = workSessionDuration;
     renderCurrentLeftTime(currentTimeLeftInSession);
-    type = 'Work';
+    state.type = 'Work';
     timeSpentInCurrentSession = 0;
+    Settings.getClockState(timeSpentInCurrentSession);
   };
 
   
   // Toggler
-  const stepDown = () => {
+  const toggleSessionType = () => {
     if (currentTimeLeftInSession > 0) {
       currentTimeLeftInSession--;
       timeSpentInCurrentSession++;
     } 
     else if (currentTimeLeftInSession === 0) {
       timeSpentInCurrentSession = 0;
-      if (type === 'Work') {
+      if (state.type === 'Work') {
         currentTimeLeftInSession = shortBreakDuration
-        // displaySessionLog('Work'); 
-        type = 'Short break';
+        state.type = 'Short break';
         getUserSettings();
       } else {
         currentTimeLeftInSession = workSessionDuration;
-        type = 'Work';
+        state.type = 'Work';
         getUserSettings();
-        if (type === 'Short break') {
-        }
-        // displaySessionLog('Short break');
       }
     }
     renderCurrentLeftTime(currentTimeLeftInSession);
   }
 
-  const toggleClockHandler = (reset) => {
-    if (reset) {
-      stopTimer();
-    } else {
-      if (isClockStopped) {
-        getUserSettings();
-        isClockStopped = false;
-      }
-      if (isClockRunning) {
-        clearInterval(clockTimer);
-        isClockRunning = false;
-      } else {
-        clockTimer = setInterval (() => {
-          stepDown();
-          renderCurrentLeftTime(currentTimeLeftInSession);
-        }, 1000)
-        isClockRunning = true;
-      }
-    }
-  };
-
 
   // Handlers
   $startBtn.addEventListener('click', () => {
-/*     if (isClockRunning) {
-      return
-    } */
-    toggleClockHandler();
+    startTimer();
   });
   
   $pauseBtn.addEventListener('click', () => {
-/*     if (!isClockRunning) {
-      return
-    } */
-    toggleClockHandler();
+    pauseTimer();
   });
   
   $stopBtn.addEventListener('click', () => {
-    toggleClockHandler(true);
+    stopTimer();
   });
 
 }
