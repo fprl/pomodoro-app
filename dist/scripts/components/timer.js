@@ -6,6 +6,14 @@ export const pomodoroTimer = () => {
   const $pauseBtn = document.querySelector('#pomodoro-pause');
   const $stopBtn = document.querySelector('#pomodoro-stop');
 
+  const state = {
+    isClockRunning: false,
+    isClockStopped: true,
+    type: 'Work',
+    timeSpentInCurrentSession: 0,
+    clockTimer: undefined
+  }
+
   let isClockRunning = false;
   let isClockStopped = true;
   let type = 'Work';
@@ -49,12 +57,12 @@ export const pomodoroTimer = () => {
     }, 1000);
   };
 
-  const pauseClock = () => {
+  const pauseTimer = () => {
     clearInterval(clockTimer);
     isClockRunning = false;
   };
 
-  const stopClock = () => {
+  const stopTimer = () => {
     getUserSettings();
     clearInterval(clockTimer);
     isClockStopped = true;
@@ -93,7 +101,7 @@ export const pomodoroTimer = () => {
 
   const toggleClockHandler = (reset) => {
     if (reset) {
-      stopClock();
+      stopTimer();
     } else {
       if (isClockStopped) {
         getUserSettings();

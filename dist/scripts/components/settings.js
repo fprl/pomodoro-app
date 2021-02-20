@@ -13,6 +13,8 @@ export const settings = () => {
   const $autoStartRound = $modal.querySelector('#toogle');
   const $longBreakInterval = $modal.querySelector('#long-break-interval');
 
+  let isClockRunning;
+
   let defaultSettings = {
     workSessionDuration: 1500,
     currentTimeLeftInSession: 1500,
@@ -33,9 +35,13 @@ export const settings = () => {
     return userCustomSettings;
   }
 
+  const getClockState = (clockState) => {
+    isClockRunning = clockState;
+  }
+
   const renderUserCurrentLeftTime = () => {
     let {updatedCurrentTimeLeftInSession} = userCustomSettings;
-
+    
     renderCurrentLeftTime(updatedCurrentTimeLeftInSession);
   }
 
@@ -64,13 +70,16 @@ export const settings = () => {
   $confirmModalBtn.addEventListener('click', () => {
     toggleModalHandler();
     userSettingsHandler();
+    if (isClockRunning) {
+      return;
+    }
     renderUserCurrentLeftTime();
   })
 
   return {
     getDefaultSettings,
     getUserSettings,
-    renderUserCurrentLeftTime
+    getClockState
   }
 
 }
