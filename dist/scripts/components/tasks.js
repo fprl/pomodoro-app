@@ -1,4 +1,4 @@
-export const tasks = () => {
+const tasks = () => {
   const $addTaskBtn = document.querySelector('#add-task');
   const $modal = document.querySelector('#add-task-modal');
   const $taskTitle = $modal.querySelector('input');
@@ -71,3 +71,5 @@ export const tasks = () => {
   }
 
 }
+
+export const Tasks = tasks();

@@ -1,5 +1,6 @@
 import {renderCurrentLeftTime} from '../UI/renderTime.js'
 import {Settings} from './settings.js';
+import {Tasks} from './tasks.js';
 
 export const pomodoroTimer = () => {
   const $pomodoro = document.querySelector('#pomodoro');
@@ -16,19 +17,19 @@ export const pomodoroTimer = () => {
   const state = {
     isClockRunning: false,
     isClockStopped: true,
+    isSessionActive: false,
     type: WORK,
   }
 
-  const defaultSettings = Settings.getDefaultSettings();
-  let userSettings;
-
   let timeSpentInCurrentSession = 0;
   let clockTimer;
-  let {workSessionDuration, currentTimeLeftInSession, shortBreakDuration, longBreakDuration, autoStart, longBreakInterval} = Settings.getDefaultSettings();
-  
+  let {workSessionDuration, currentTimeLeftInSession, shortBreakDuration, longBreakDuration, autoStart, longBreakInterval} = Settings.getDefaultSettings;
+
   
   // Utilities
-  const setSettings = (userSettings) => {
+  const setSettings = () => {
+    const defaultSettings = Settings.getDefaultSettings();
+    let userSettings = Settings.getUserSettings();
     if (state.type === WORK) {
       currentTimeLeftInSession = (userSettings)
         ? userSettings.workSessionDuration
@@ -43,7 +44,7 @@ export const pomodoroTimer = () => {
       currentTimeLeftInSession = (userSettings)
         ? userSettings.longBreakDuration
         : defaultSettings.longBreakDuration;
-      shortBreakDuration = currentTimeLeftInSession;
+      longBreakDuration = currentTimeLeftInSession;
     }
   }
 
@@ -58,14 +59,26 @@ export const pomodoroTimer = () => {
       timeSpentInCurrentSession = 0;
       if (state.type === WORK) {
         state.type = SHORT_BREAK;
-        userSettings = Settings.getUserSettings();
-        setSettings(userSettings);
+        setSettings();
       } else if (state.type === SHORT_BREAK) {
         state.type = WORK;
-        userSettings = Settings.getUserSettings();
-        setSettings(userSettings);
+        setSettings();
       }
     }
+  }
+
+
+  // Type toggler
+  const setTypeHandler = (type) => {
+    if (state.isSessionActive) {
+      stopTimer(type);
+    }
+    state.isClockStopped = true;
+    state.isClockRunning = false;
+    state.isSessionActive = false;
+    state.type = type;
+    setSettings();
+    renderCurrentLeftTime(currentTimeLeftInSession);
   }
 
 
@@ -75,8 +88,7 @@ export const pomodoroTimer = () => {
       return;
     }
     if (timeSpentInCurrentSession === 0) {
-      userSettings = Settings.getUserSettings();
-      setSettings(userSettings);
+      setSettings();
     }
     clockTimer = setInterval(() => {
       toggleSessionType()
@@ -84,7 +96,8 @@ export const pomodoroTimer = () => {
     }, 1000);
     state.isClockStopped = false;
     state.isClockRunning = true;
-    Settings.getClockState(timeSpentInCurrentSession + 1);
+    state.isSessionActive = true;
+    Settings.getClockState(state.isSessionActive);
   };
 
   const pauseTimer = () => {
@@ -93,23 +106,29 @@ export const pomodoroTimer = () => {
     state.isClockRunning = false;
   };
 
-  const stopTimer = () => {
+  const stopTimer = (stateType = WORK) => {
     clearInterval(clockTimer);
-    userSettings = Settings.getUserSettings();
-    setSettings(userSettings);
+    setSettings();
     state.isClockStopped = true;
     state.isClockRunning = false;
-    state.type = WORK;
+    state.isSessionActive = false;
+    state.type = stateType;
     renderCurrentLeftTime(currentTimeLeftInSession);
     timeSpentInCurrentSession = 0;
-    Settings.getClockState(timeSpentInCurrentSession);
+    Settings.getClockState(state.isSessionActive);
   };
 
 
   // Handlers
-  /* $pomodoro.addEventListener('click', setType);
-  $shortBreak.addEventListener('click', setType);
-  $LongBreak.addEventListener('click', setType); */
+  $pomodoro.addEventListener('click', () => {
+    setTypeHandler(WORK);
+  });
+  $shortBreak.addEventListener('click', () => {
+    setTypeHandler(SHORT_BREAK);
+  });
+  $LongBreak.addEventListener('click', () => {
+    setTypeHandler(LONG_BREAK);
+  });
 
   $startBtn.addEventListener('click', startTimer);  
   $pauseBtn.addEventListener('click', pauseTimer);

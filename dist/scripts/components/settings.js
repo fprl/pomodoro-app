@@ -14,7 +14,7 @@ const settings = () => {
   const $longBreakInterval = $modal.querySelector('#long-break-interval');
 
   let timerState = {
-    timeSpentInCurrentSession: 0
+    isSessionActive: false
   }
 
   let defaultSettings = {
@@ -30,8 +30,8 @@ const settings = () => {
 
 
   // Returned
-  const getClockState = (timeInCurrentSession) => {
-    timerState.timeSpentInCurrentSession = timeInCurrentSession;
+  const getClockState = (isSessionActive) => {
+    timerState.isSessionActive = isSessionActive;
   }
 
   const getDefaultSettings = () => {
@@ -63,7 +63,7 @@ const settings = () => {
   }
 
   const renderUserCurrentLeftTimeHandler = () => {
-    if (timerState.timeSpentInCurrentSession !== 0) {
+    if (timerState.isSessionActive) {
       return;
     }
     let {currentTimeLeftInSession} = userCustomSettings;
