@@ -1,6 +1,6 @@
 import {renderCurrentLeftTime} from '../UI/renderTime.js'
 
-export const settings = () => {
+const settings = () => {
   const $backdrop = document.querySelector('#backdrop');
   const $modal = document.querySelector('#pomodoro-set-modal');
   const $showModalBtn = document.querySelector('#show-modal');
@@ -13,7 +13,7 @@ export const settings = () => {
   const $autoStartRound = $modal.querySelector('#toogle');
   const $longBreakInterval = $modal.querySelector('#long-break-interval');
 
-  let state = {
+  let timerState = {
     timeSpentInCurrentSession: 0
   }
 
@@ -30,6 +30,10 @@ export const settings = () => {
 
 
   // Returned
+  const getClockState = (timeInCurrentSession) => {
+    timerState.timeSpentInCurrentSession = timeInCurrentSession;
+  }
+
   const getDefaultSettings = () => {
     return defaultSettings;
   }
@@ -38,20 +42,16 @@ export const settings = () => {
     return userCustomSettings;
   }
 
-  const getClockState = (timeInCurrentSession) => {
-    state.timeSpentInCurrentSession = timeInCurrentSession;
-  }
-
 
   // Utilities
   const userSettingsHandler = () => {
     userCustomSettings = {
-      updatedWorkSessionDuration: $workSessionDuration.value * 60,
-      updatedCurrentTimeLeftInSession: $workSessionDuration.value * 60,
-      updatedShortBreakDuration: $shortBreakDuration.value * 60,
-      updatedLongBreakDuration: $longBreakDuration.value * 60,
-      updatedAutoStart: $autoStartRound.checked,
-      updatedLongBreakInterval: $longBreakInterval.value
+      workSessionDuration: $workSessionDuration.value * 60,
+      currentTimeLeftInSession: $workSessionDuration.value * 60,
+      shortBreakDuration: $shortBreakDuration.value * 60,
+      longBreakDuration: $longBreakDuration.value * 60,
+      autoStart: $autoStartRound.checked,
+      longBreakInterval: $longBreakInterval.value
     }
   }
 
@@ -63,12 +63,12 @@ export const settings = () => {
   }
 
   const renderUserCurrentLeftTimeHandler = () => {
-    if (state.timeSpentInCurrentSession !== 0) {
+    if (timerState.timeSpentInCurrentSession !== 0) {
       return;
     }
-    let {updatedCurrentTimeLeftInSession} = userCustomSettings;
+    let {currentTimeLeftInSession} = userCustomSettings;
     
-    renderCurrentLeftTime(updatedCurrentTimeLeftInSession);
+    renderCurrentLeftTime(currentTimeLeftInSession);
   }
 
 
@@ -84,7 +84,9 @@ export const settings = () => {
   return {
     getDefaultSettings,
     getUserSettings,
-    getClockState
+    getClockState,
   }
 
 }
+
+export const Settings = settings();
