@@ -1,15 +1,15 @@
-import {renderCurrentLeftTime} from '../UI/renderTime.js'
+import {renderCurrentLeftTime} from '../UI/renderTime.js';
+import {toggleButtonClass} from '../UI/toggleButtonClass.js';
 import {Settings} from './settings.js';
 import {Tasks} from './tasks.js';
 
 export const pomodoroTimer = () => {
   const $pomodoro = document.querySelector('#pomodoro');
   const $shortBreak = document.querySelector('#short-break');
-  const $LongBreak = document.querySelector('#long-break');
+  const $longBreak = document.querySelector('#long-break');
   const $startBtn = document.querySelector('#pomodoro-start');
   const $pauseBtn = document.querySelector('#pomodoro-pause');
   const $stopBtn = document.querySelector('#pomodoro-stop');
-
   const WORK = 'Work';
   const SHORT_BREAK = 'Short Break';
   const LONG_BREAK = 'Long Break';
@@ -30,6 +30,11 @@ export const pomodoroTimer = () => {
   const setSettings = () => {
     const defaultSettings = Settings.getDefaultSettings();
     let userSettings = Settings.getUserSettings();
+
+    autoStart = (userSettings)
+      ? userSettings.autoStart
+      : defaultSettings.autoStart
+
     if (state.type === WORK) {
       currentTimeLeftInSession = (userSettings)
         ? userSettings.workSessionDuration
@@ -47,31 +52,38 @@ export const pomodoroTimer = () => {
       longBreakDuration = currentTimeLeftInSession;
     }
   }
-
+  
   
   // Session toggler
   const toggleSessionType = () => {
     if (currentTimeLeftInSession > 0) {
       currentTimeLeftInSession--;
       timeSpentInCurrentSession++;
-    } 
-    else if (currentTimeLeftInSession === 0) {
+    } else if (currentTimeLeftInSession === 0) {
       timeSpentInCurrentSession = 0;
       if (state.type === WORK) {
         state.type = SHORT_BREAK;
+        toggleButtonClass($shortBreak);
         setSettings();
+        if (!autoStart) {
+          pauseTimer();
+        }
       } else if (state.type === SHORT_BREAK) {
         state.type = WORK;
+        toggleButtonClass($pomodoro);
         setSettings();
+        if (!autoStart) {
+          pauseTimer();
+        }
       }
     }
   }
 
 
-  // Type toggler
+  // Type toggler handler
   const setTypeHandler = (type) => {
     if (state.isSessionActive) {
-      stopTimer(type);
+      stopTimer();
     }
     state.isClockStopped = true;
     state.isClockRunning = false;
@@ -94,6 +106,7 @@ export const pomodoroTimer = () => {
       toggleSessionType()
       renderCurrentLeftTime(currentTimeLeftInSession);
     }, 1000);
+    
     state.isClockStopped = false;
     state.isClockRunning = true;
     state.isSessionActive = true;
@@ -106,13 +119,12 @@ export const pomodoroTimer = () => {
     state.isClockRunning = false;
   };
 
-  const stopTimer = (stateType = WORK) => {
+  const stopTimer = () => {
     clearInterval(clockTimer);
     setSettings();
     state.isClockStopped = true;
     state.isClockRunning = false;
     state.isSessionActive = false;
-    state.type = stateType;
     renderCurrentLeftTime(currentTimeLeftInSession);
     timeSpentInCurrentSession = 0;
     Settings.getClockState(state.isSessionActive);
@@ -122,15 +134,19 @@ export const pomodoroTimer = () => {
   // Handlers
   $pomodoro.addEventListener('click', () => {
     setTypeHandler(WORK);
+    toggleButtonClass($pomodoro);
+
   });
   $shortBreak.addEventListener('click', () => {
     setTypeHandler(SHORT_BREAK);
+    toggleButtonClass($shortBreak);
   });
-  $LongBreak.addEventListener('click', () => {
+  $longBreak.addEventListener('click', () => {
     setTypeHandler(LONG_BREAK);
+    toggleButtonClass($longBreak);
   });
 
-  $startBtn.addEventListener('click', startTimer);  
+  $startBtn.addEventListener('click', startTimer); 
   $pauseBtn.addEventListener('click', pauseTimer);
   $stopBtn.addEventListener('click', stopTimer);
 
