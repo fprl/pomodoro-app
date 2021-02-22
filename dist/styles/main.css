@@ -31494,6 +31494,19 @@ input:checked ~ .toggle__dot {
   --tw-translate-x: 100%;
 }
 
+.btn--active {
+  --tw-bg-opacity: 1;
+  background-color: rgba(185, 28, 28, var(--tw-bg-opacity));
+  --tw-bg-opacity: 0.5;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.btn--active:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;

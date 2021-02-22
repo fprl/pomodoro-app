@@ -76,7 +76,7 @@
               <div class="flex items-center justify-start w-1/6">
                 <label for="toogle" class="relative cursor-pointer">
                   <!-- input -->
-                  <input id="toogle" class="hidden" type="checkbox">
+                  <input id="toogle" class="hidden" type="checkbox" checked>
                   <!-- line -->
                   <div class="w-10 h-4 bg-gray-400 rounded-full shadow-inner"></div>
                   <!-- dot -->
@@ -103,10 +103,10 @@
     <main class="px-6 mx-auto sm:max-w-lg md:max-w-lg lg:max-w-xl">
       <div class="flex flex-col items-center justify-center o-6">
         <!-- selectors -->
-        <div class="flex items-center justify-center w-full rounded-md">
-          <button id="pomodoro" class="w-24 p-2 mx-2 text-sm text-white bg-white rounded-md shadow-sm bg-opacity-30 focus:bg-opacity-50 focus:bg-red-700 md:w-6/12 focus:outline-none">Pomodoro</button>
-          <button id="short-break" class="w-24 p-2 mx-2 text-sm text-white bg-white rounded-md shadow-sm bg-opacity-30 focus:bg-opacity-50 focus:bg-red-700 md:w-6/12 focus:outline-none">Short break</button>
-          <button id="long-break" class="w-24 p-2 mx-2 text-sm text-white bg-white rounded-md shadow-sm bg-opacity-30 focus:bg-opacity-50 focus:bg-red-700 md:w-6/12 focus:outline-none">Long break</button>
+        <div id="session-type" class="flex items-center justify-center w-full rounded-md">
+          <button id="pomodoro" class="w-24 p-2 mx-2 text-sm text-white bg-white rounded-md shadow-sm bg-opacity-30 md:w-6/12 btn--active">Pomodoro</button>
+          <button id="short-break" class="w-24 p-2 mx-2 text-sm text-white bg-white rounded-md shadow-sm bg-opacity-30 md:w-6/12">Short break</button>
+          <button id="long-break" class="w-24 p-2 mx-2 text-sm text-white bg-white rounded-md shadow-sm bg-opacity-30 md:w-6/12">Long break</button>
         </div>
         <!-- clock -->
         <div class="flex flex-col items-center justify-center mx-auto bg-red-600 rounded-full shadow-md bg-opacity-80 w-72 h-72 o-4">

@@ -16,3 +16,7 @@
 input:checked ~ .toggle__dot {
   @apply transform translate-x-full bg-red-600;
 }
+
+.btn--active {
+  @apply bg-red-700 bg-opacity-50 outline-none focus:outline-none;
+}
