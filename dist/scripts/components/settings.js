@@ -42,7 +42,6 @@ const settings = () => {
     return userCustomSettings;
   }
 
-
   // Utilities
   const userSettingsHandler = () => {
     userCustomSettings = {
@@ -55,22 +54,12 @@ const settings = () => {
     }
   }
 
-
   // UI
   const toggleModalHandler = () => {
     $backdrop.classList.toggle('hidden');
     $modal.classList.toggle('hidden');
   }
-
-  const renderUserCurrentLeftTimeHandler = () => {
-    if (timerState.isSessionActive) {
-      return;
-    }
-    let {currentTimeLeftInSession} = userCustomSettings;
-    
-    renderCurrentLeftTime(currentTimeLeftInSession);
-  }
-
+  
 
   $showModalBtn.addEventListener('click', toggleModalHandler);
   $backdrop.addEventListener('click', toggleModalHandler);
@@ -78,7 +67,9 @@ const settings = () => {
   $confirmModalBtn.addEventListener('click', () => {
     toggleModalHandler();
     userSettingsHandler();
-    renderUserCurrentLeftTimeHandler();
+    if (!timerState.isSessionActive) {
+      renderCurrentLeftTime(userCustomSettings.currentTimeLeftInSession);
+    }
   })
 
   return {
