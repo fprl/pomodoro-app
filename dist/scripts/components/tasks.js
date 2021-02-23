@@ -23,7 +23,6 @@ const tasks = () => {
       taskTitle,
       taskSummary
     };
-
     sessionTasks.push(currentTask);
     return currentTask;
   }

@@ -3,9 +3,9 @@ export const toggleClasses = (elem, type) => {
   const $background = document.querySelector('#app-background');
   const $clock = document.querySelector('#app-clock');
   
+  const btnActiveClass = 'btn--active';
   const bgClass = ` bg--${type}`;
   const textClass = ` text--${type}`;
-  const btnActiveClass = 'btn--active';
   
   const bgRegex = /(^|\s)bg-\S+/g;
   const textRegex = /(^|\s)text-\S+/g;

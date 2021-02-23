@@ -29,7 +29,7 @@ export const pomodoroTimer = () => {
   // Utilities
   const setSettings = () => {
     const defaultSettings = Settings.getDefaultSettings();
-    let userSettings = Settings.getUserSettings();
+    const userSettings = Settings.getUserSettings();
 
     autoStart = (userSettings)
       ? userSettings.autoStart
@@ -90,7 +90,7 @@ export const pomodoroTimer = () => {
     state.isSessionActive = false;
     state.type = type;
     setSettings();
-    renderCurrentLeftTime(currentTimeLeftInSession);
+    renderCurrentLeftTime(currentTimeLeftInSession, type);
   }
 
 
@@ -104,7 +104,7 @@ export const pomodoroTimer = () => {
     }
     clockTimer = setInterval(() => {
       toggleSessionType()
-      renderCurrentLeftTime(currentTimeLeftInSession);
+      renderCurrentLeftTime(currentTimeLeftInSession, state.type);
     }, 1000);
     
     state.isClockStopped = false;
@@ -125,7 +125,7 @@ export const pomodoroTimer = () => {
     state.isClockStopped = true;
     state.isClockRunning = false;
     state.isSessionActive = false;
-    renderCurrentLeftTime(currentTimeLeftInSession);
+    renderCurrentLeftTime(currentTimeLeftInSession, state.type);
     timeSpentInCurrentSession = 0;
     Settings.getClockState(state.isSessionActive);
   };
