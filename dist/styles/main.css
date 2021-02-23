@@ -31495,9 +31495,7 @@ input:checked ~ .toggle__dot {
 }
 
 .btn--active {
-  --tw-bg-opacity: 1;
-  background-color: rgba(185, 28, 28, var(--tw-bg-opacity));
-  --tw-bg-opacity: 0.5;
+  --tw-bg-opacity: 0.6;
   outline: 2px solid transparent;
   outline-offset: 2px;
 }
@@ -31505,6 +31503,32 @@ input:checked ~ .toggle__dot {
 .btn--active:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
+}
+
+.bg--pomodoro {
+  --tw-bg-opacity: 1;
+  background-color: rgba(185, 28, 28, var(--tw-bg-opacity));
+}
+
+.text--pomodoro {
+  --tw-text-opacity: 1;
+  color: rgba(185, 28, 28, var(--tw-text-opacity));
+}
+
+.bg--shortbreak {
+  background-color: rgb(70, 142, 145)
+}
+
+.text--shortbreak {
+  color: rgb(70, 142, 145);
+}
+
+.bg--longbreak {
+  background-color: rgb(67, 126, 168)
+}
+
+.text--longbreak {
+  color: rgb(67, 126, 168)
 }
 
 @media (min-width: 640px) {

@@ -18,5 +18,29 @@ input:checked ~ .toggle__dot {
 }
 
 .btn--active {
-  @apply bg-red-700 bg-opacity-50 outline-none focus:outline-none;
+  @apply outline-none bg-opacity-60 focus:outline-none;
+}
+
+.bg--pomodoro {
+  @apply bg-red-700;
+}
+
+.text--pomodoro {
+  @apply text-red-700;
+}
+
+.bg--shortbreak {
+  background-color: rgb(70, 142, 145)
+}
+
+.text--shortbreak {
+  color: rgb(70, 142, 145);
+}
+
+.bg--longbreak {
+  background-color: rgb(67, 126, 168)
+}
+
+.text--longbreak {
+  color: rgb(67, 126, 168)
 }

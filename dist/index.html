@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <div class="h-full max-w-full mx-auto bg-red-500 md:h-screen o-8 font-roboto">
+  <div id="app-background" class="h-full max-w-full mx-auto bg--pomodoro md:h-screen o-8 font-roboto">
     <!-- navbar -->
     <nav class="p-3 pb-0 mx-auto md:max-w-2xl lg:max-w-3xl">
       <div class="flex justify-between pb-1 leading-5 text-white border-b border-black border-opacity-10">
@@ -109,11 +109,11 @@
           <button id="long-break" class="w-24 p-2 mx-2 text-sm text-white bg-white rounded-md shadow-sm bg-opacity-30 md:w-6/12">Long break</button>
         </div>
         <!-- clock -->
-        <div class="flex flex-col items-center justify-center mx-auto bg-red-600 rounded-full shadow-md bg-opacity-80 w-72 h-72 o-4">
+        <div id="app-clock" class="flex flex-col items-center justify-center mx-auto rounded-full shadow-md bg--pomodoro text--pomodoro w-72 h-72 o-4">
           <h3 id="pomodoro-timer" class="text-white text-7xl">25:00</h3>
-          <button id="pomodoro-start" class="w-4/12 h-8 text-sm font-bold text-red-500 uppercase bg-white rounded-md md:w-6/12 lg:w-5/12 focus:outline-none">start</button>
-          <button id="pomodoro-pause" class="w-4/12 h-8 text-sm font-bold text-red-500 uppercase bg-white rounded-md md:w-6/12 lg:w-5/12 focus:outline-none">pause</button>
-          <button id="pomodoro-stop" class="w-4/12 h-8 text-sm font-bold text-red-500 uppercase bg-white rounded-md md:w-6/12 lg:w-5/12 focus:outline-none">stop</button>
+          <button id="pomodoro-start" class="w-4/12 h-8 text-sm font-bold uppercase bg-white rounded-md md:w-6/12 lg:w-5/12 focus:outline-none">start</button>
+          <button id="pomodoro-pause" class="w-4/12 h-8 text-sm font-bold uppercase bg-white rounded-md md:w-6/12 lg:w-5/12 focus:outline-none">pause</button>
+          <button id="pomodoro-stop" class="w-4/12 h-8 text-sm font-bold uppercase bg-white rounded-md md:w-6/12 lg:w-5/12 focus:outline-none">stop</button>
       </div>
     </main>
     
@@ -128,7 +128,7 @@
 
       <!-- add task -->
       <div class="flex flex-col items-center px-6 mt-6">
-        <button id="add-task" class="w-9/12 h-10 text-sm text-gray-100 uppercase bg-white rounded-sm shadow-sm bg-opacity-30 md:w-6/12 lg:w-5/12 focus:outline-none">add task</button>
+        <button id="add-task" class="w-9/12 h-10 text-sm text-gray-100 uppercase bg-white rounded-md shadow-sm bg-opacity-30 md:w-6/12 lg:w-5/12 focus:outline-none">add task</button>
       </div>
 
       <!-- task modal -->
