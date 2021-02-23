@@ -1,5 +1,5 @@
 import {renderCurrentLeftTime} from '../UI/renderTime.js';
-import {toggleButtonClass} from '../UI/toggleButtonClass.js';
+import {toggleClasses} from '../UI/toggleClasses.js';
 import {Settings} from './settings.js';
 import {Tasks} from './tasks.js';
 
@@ -10,9 +10,9 @@ export const pomodoroTimer = () => {
   const $startBtn = document.querySelector('#pomodoro-start');
   const $pauseBtn = document.querySelector('#pomodoro-pause');
   const $stopBtn = document.querySelector('#pomodoro-stop');
-  const WORK = 'Work';
-  const SHORT_BREAK = 'Short Break';
-  const LONG_BREAK = 'Long Break';
+  const WORK = 'pomodoro';
+  const SHORT_BREAK = 'shortbreak';
+  const LONG_BREAK = 'longbreak';
 
   const state = {
     isClockRunning: false,
@@ -63,14 +63,14 @@ export const pomodoroTimer = () => {
       timeSpentInCurrentSession = 0;
       if (state.type === WORK) {
         state.type = SHORT_BREAK;
-        toggleButtonClass($shortBreak);
+        toggleClasses($shortBreak, state.type);
         setSettings();
         if (!autoStart) {
           pauseTimer();
         }
       } else if (state.type === SHORT_BREAK) {
         state.type = WORK;
-        toggleButtonClass($pomodoro);
+        toggleClasses($pomodoro, state.type);
         setSettings();
         if (!autoStart) {
           pauseTimer();
@@ -134,16 +134,16 @@ export const pomodoroTimer = () => {
   // Handlers
   $pomodoro.addEventListener('click', () => {
     setTypeHandler(WORK);
-    toggleButtonClass($pomodoro);
+    toggleClasses($pomodoro, WORK);
 
   });
   $shortBreak.addEventListener('click', () => {
     setTypeHandler(SHORT_BREAK);
-    toggleButtonClass($shortBreak);
+    toggleClasses($shortBreak, SHORT_BREAK);
   });
   $longBreak.addEventListener('click', () => {
     setTypeHandler(LONG_BREAK);
-    toggleButtonClass($longBreak);
+    toggleClasses($longBreak, LONG_BREAK);
   });
 
   $startBtn.addEventListener('click', startTimer); 
