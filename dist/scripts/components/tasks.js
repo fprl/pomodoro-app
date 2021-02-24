@@ -65,7 +65,6 @@ const tasks = () => {
   });
 
   return {
-    $addTaskBtn,
     getSessionTasks
   }
 
