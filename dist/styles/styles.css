@@ -18,7 +18,7 @@ input:checked ~ .toggle__dot {
 }
 
 .btn--active {
-  @apply outline-none bg-opacity-60 focus:outline-none;
+  @apply bg-white outline-none bg-opacity-60 focus:outline-none;
 }
 
 .bg--pomodoro {

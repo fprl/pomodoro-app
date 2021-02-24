@@ -31491,10 +31491,11 @@ input:checked ~ .toggle__dot {
   transform: translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   --tw-translate-x: 100%;
   background-color: rgb(219, 82, 77);
-  /* @apply bg-red-700; */
 }
 
 .btn--active {
+  --tw-bg-opacity: 1;
+  background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
   --tw-bg-opacity: 0.6;
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -31507,12 +31508,10 @@ input:checked ~ .toggle__dot {
 
 .bg--pomodoro {
   background-color: rgb(219, 82, 77);
-  /* @apply bg-red-700; */
 }
 
 .text--pomodoro {
   color: rgb(219, 82, 77);
-  /* @apply text-red-700; */
 }
 
 .bg--shortbreak {
