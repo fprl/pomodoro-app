@@ -14,7 +14,7 @@
   <div id="app-background" class="max-w-full min-h-screen mx-auto bg--pomodoro font-roboto">
     <!-- navbar -->
     <nav class="p-3 pb-0 mx-auto md:max-w-2xl">
-      <div class="flex justify-between pb-1 leading-5 text-white border-b border-black border-opacity-10">
+      <div class="flex justify-between leading-5 text-white">
         <a class="flex items-center my-2 text-xl" href="./index.html">
           <img class="mr-1 h-4/5" src="./images/tomato.png" alt="">
           <h1>Pomoapp</h1>
@@ -95,18 +95,22 @@
               <button id="confirm-modal-settings" class="w-1/3 h-10 text-sm font-bold text-white border border-gray-200 rounded-md shadow-sm bg--pomodoro md:w-1/4 focus:outline-none">Ok</button>
             </div>
           </div>
-          
+        </div>
       </div>
     </nav>
 
     <!-- pomodoro -->
-    <main class="px-6 mx-auto mt-10 sm:max-w-lg md:max-w-lg lg:max-w-xl">
-      <div class="flex flex-col items-center justify-center o-6">
+    <main class="px-3 mx-auto md:max-w-2xl">
+      <!-- progress bar -->
+      <div class="w-full h-0.5 mt-2 mb-10 leading-5 text-white border-b border-black border-opacity-10">
+        <div id="progress-bar" class="h-0.5 bg-white" style="width: 0%"></div>
+      </div>
+      <div class="o-6">
         <!-- selectors -->
-        <div id="session-type" class="flex items-center justify-center w-full rounded-md">
-          <button id="pomodoro" class="w-24 p-2 mx-2 text-sm text-white rounded-md shadow-md bg-opacity-30 md:w-6/12 btn--active">Pomodoro</button>
-          <button id="short-break" class="w-24 p-2 mx-2 text-sm text-white rounded-md shadow-md bg-opacity-30 md:w-6/12">Short break</button>
-          <button id="long-break" class="w-24 p-2 mx-2 text-sm text-white rounded-md shadow-md bg-opacity-30 md:w-6/12">Long break</button>
+        <div id="session-type" class="flex items-center justify-center w-full">
+          <button id="pomodoro" class="p-2 mx-2 text-sm text-white rounded-md shadow-md w-28 bg-opacity-30 md:w-1/5 btn--active">Pomodoro</button>
+          <button id="short-break" class="p-2 mx-2 text-sm text-white rounded-md shadow-md w-28 bg-opacity-30 md:w-1/5">Short break</button>
+          <button id="long-break" class="p-2 mx-2 text-sm text-white rounded-md shadow-md w-28 bg-opacity-30 md:w-1/5">Long break</button>
         </div>
         <!-- clock -->
         <div id="app-clock" class="flex flex-col items-center justify-center mx-auto rounded-full shadow-md bg--pomodoro text--pomodoro w-72 h-72 o-4">
@@ -114,6 +118,7 @@
           <button id="pomodoro-start" class="w-4/12 h-8 text-sm font-bold uppercase bg-white rounded-md md:w-6/12 lg:w-5/12 focus:outline-none">start</button>
           <button id="pomodoro-pause" class="w-4/12 h-8 text-sm font-bold uppercase bg-white rounded-md md:w-6/12 lg:w-5/12 focus:outline-none">pause</button>
           <button id="pomodoro-stop" class="w-4/12 h-8 text-sm font-bold uppercase bg-white rounded-md md:w-6/12 lg:w-5/12 focus:outline-none">stop</button>
+        </div>
       </div>
     </main>
     
@@ -121,8 +126,8 @@
     <section class="px-6 mx-auto mt-10 sm:max-w-lg md:max-w-lg lg:max-w-xl">
       <!-- task info -->
       <div id="tasks-info" class="flex flex-col items-center text-center text-white divide-y-2 divide-gray-100 divide-opacity-50 o-2">
-        <h1 class="text-sm uppercase">What's your focus?</h1>
-        <p class="text-sm font-thin leading-normal break-words md:w-3/4"></p>
+        <h1 class="text-sm uppercase break-all">What's your focus?</h1>
+        <p class="text-sm font-thin leading-normal break-all md:w-3/4"></p>
         <!-- write a draft of the first chapter of the poem. think over the names of the heroes and the names of cities -->
       </div>
 
