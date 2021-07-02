@@ -30,7 +30,7 @@ input:checked ~ .toggle__dot {
 }
 
 .btn--active {
-  @apply bg-white outline-none bg-opacity-60 focus:outline-none;
+  @apply bg-white outline-none bg-opacity-60 focus:outline-none focus:ring focus:border-white ring-white;
 }
 
 .bg--pomodoro {
