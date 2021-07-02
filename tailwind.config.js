@@ -1,9 +1,7 @@
 module.exports = {
   purge: {
-    enabled: false,
-    content: [
-    './dist/**/*.html',
-    './dist/**/*.js',],
+    enabled: true,
+    content: ['./dist/*.html']
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -16,6 +14,5 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [
-    require('tailwindcss-owl')],
+  plugins: [require('tailwindcss-owl')],
 }
