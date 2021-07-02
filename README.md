@@ -1,7 +1,7 @@
 <!-- REPO TITLE -->
 <br />
 <p align="center">
-  <img src="readme/logo.png" alt="Logo" height="80">
+  <img src="readme/logo.png" alt="Logo" height="120">
   <h4 align="center">PomoApp</h4>
   <p align="center">
     <a href="https://francoromanol.github.io/pomodoro-app/">Live Demo</a>
@@ -14,7 +14,7 @@
 
 ![product-screenshot]
 <!-- ABOUT THE PROJECT -->
-### About the app
+## About the app
 The aim of this app is to help you focus on any task you are working on, such as study, writing, or coding. This app is inspired by Pomodoro Technique which is a time management method developed by [Francesco Cirillo](https://francescocirillo.com/pages/pomodoro-technique).
 
 ### How to use it?
@@ -31,7 +31,7 @@ The aim of this app is to help you focus on any task you are working on, such as
  * Dynamic browser tab title based on timer
 
 
-### Made with
+## Made with
 * [Tailwind CSS](https://tailwindcss.com/)
 * [Webpack](https://webpack.js.org/)
 * JavaScript
