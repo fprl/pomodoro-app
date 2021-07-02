@@ -7,7 +7,7 @@
     "build:css": "tailwindcss build src/styles/styles.css -o src/styles/main.css",
     "watch": "webpack --watch",
     "start": "webpack serve --open",
-    "build": "export NODE_ENV=production && webpack",
+    "build": "webpack",
     "deploy": "npm run build && gh-pages -d dist"
   },
   "repository": {
