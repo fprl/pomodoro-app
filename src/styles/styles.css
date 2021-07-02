@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: regular;
+  src: url('../fonts/Roboto-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: bold;
+  src: url('../fonts/Roboto-bold.ttf') format('truetype');
+  font-weight: 700;
+}
+
+html {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Toggle checkbox button */
+.toggle__dot {
+  @apply transition-all duration-300 ease-in-out -top-1 -left-1;
+}
+
+input:checked ~ .toggle__dot {
+  @apply transform translate-x-full bg--pomodoro;
+}
+
+.btn--active {
+  @apply bg-white outline-none bg-opacity-60 focus:outline-none;
+}
+
+.bg--pomodoro {
+  background-color: rgb(219, 82, 77);
+}
+
+.text--pomodoro {
+  color: rgb(219, 82, 77);
+}
+
+.bg--shortbreak {
+  background-color: rgb(70, 142, 145)
+}
+
+.text--shortbreak {
+  color: rgb(70, 142, 145);
+}
+
+.bg--longbreak {
+  background-color: rgb(67, 126, 168)
+}
+
+.text--longbreak {
+  color: rgb(67, 126, 168)
+}
