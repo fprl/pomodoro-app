@@ -4,7 +4,10 @@
   "description": "A scss/js Pomodoro app!",
   "main": "index.js",
   "scripts": {
-    "build-css": "tailwindcss build dist/styles/styles.css -o dist/styles/main.css"
+    "build:css": "tailwindcss build src/styles/styles.css -o src/styles/main.css",
+    "watch": "webpack --watch",
+    "start": "webpack serve --open",
+    "build": "export NODE_ENV=production && webpack"
   },
   "repository": {
     "type": "git",
@@ -19,10 +22,17 @@
   "homepage": "https://github.com/francoromanol/pomodoro-app#readme",
   "dependencies": {
     "autoprefixer": "^10.2.4",
-    "postcss": "^8.2.5",
+    "postcss": "^8.3.5",
+    "postcss-loader": "^6.1.1",
+    "postcss-preset-env": "^6.7.0",
     "tailwindcss": "^2.0.3"
   },
   "devDependencies": {
-    "tailwindcss-owl": "^2.0.0"
+    "css-loader": "^5.2.6",
+    "style-loader": "^3.0.0",
+    "tailwindcss-owl": "^2.0.0",
+    "webpack": "^5.42.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
   }
 }
